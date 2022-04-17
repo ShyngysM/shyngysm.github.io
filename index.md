@@ -1,4 +1,4 @@
-**Description:** _Bookmark this to keep an eye on my project updates!_
+_**Description:**   Bookmark this to keep an eye on my project updates!_
 
 ### Introduction
 
