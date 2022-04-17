@@ -2,6 +2,7 @@ _**Description:**   Bookmark this to keep an eye on my project updates!_
 
 ### Introduction
 ![Image](my_pic.png)
+
 I'm glad to see you on my website, my name is Shyngys Muratbek and I'm enthusiast of electrical engineering!
 On this simple website you can find all important information about me and my projects.
 
