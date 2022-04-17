@@ -1,4 +1,17 @@
+### Introduction
 
+I'm glad to see you on my website, my name is Shyngys Muratbek and I'm enthusiast of electrical engineering!
+On this simple website you can find all important information about me and my projects.
+My CV and achivements can be downloaded as .zip or .tar
+
+I'm although looking for people who like to program and share their experience and knowledge.
+Let us collaborate on interesting projects!
+
+Programing languages I would like to work on:
+- C++
+- Python
+- GDscript (gaming)
+- C (microcontrollers)
 
 You can use the [editor on GitHub](https://github.com/ShyngysM/shyngysm.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
 
