@@ -1,511 +1,286 @@
-<!DOCTYPE HTML>
-<!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-
+<!DOCTYPE html>
+<html lang="en" class="h-full">
 <head>
-  <title>Shyngys's homepage!</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <noscript>
-    <link rel="stylesheet" href="assets/css/noscript.css" />
-  </noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Czechia Road Trip Planner (Nov 17-20, 2026)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
 </head>
+<body class="h-full bg-slate-900 text-slate-100 flex flex-col antialiased">
 
-<body class="is-preload">
-
-  <!-- Wrapper -->
-  <div id="wrapper">
-
-    <!-- Header -->
-    <header id="header">
-      <div class="logo">
-        <span class="icon solid fa-bolt "></span>
-      </div>
-      <div class="content">
-        <div class="inner">
-          <h1>Welcome to Shyngys's lair!</h1>
-          <p>Bookmark this to keep an eye on my project updates!</p>
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="bg-emerald-600 text-white p-2 rounded-lg font-bold text-lg shadow">🚗</span>
+                <div>
+                    <h1 class="text-base sm:text-lg font-bold tracking-tight text-white">Czechia Road Trip 2026</h1>
+                    <p class="text-xs text-slate-400">Nov 17 – Nov 20 • REWE Mickten ➔ Prague ➔ Kutná Hora ➔ Karlovy Vary</p>
+                </div>
+            </div>
+            <div>
+                <a href="https://www.google.com/maps/dir/REWE,+Sternstraße+2a,+01139+Dresden/The+Benedict+Boutique+Hotel+Old+Town+Prague,+Rybná+685%2F16,+110+00+Staré+Město,+Czechia/Sedlec+Ossuary,+Zámecká,+284+03+Kutná+Hora+3,+Czechia/The+Benedict+Boutique+Hotel+Old+Town+Prague,+Rybná+685%2F16,+110+00+Staré+Město,+Czechia/Hotel+Imperial,+Libušina+1212%2F18,+360+01+Karlovy+Vary+1,+Czechia/REWE,+Sternstraße+2a,+01139+Dresden/@50.4604044,13.3568136,8.42z/data=!4m37!4m36!1m5!1m1!1s0x4709cfae512c57c1:0x76b48269a1e2c159!2m2!1d13.7126519!2d51.0797383!1m5!1m1!1s0x470b9500370691c1:0x885e9bd420755f0e!2m2!1d14.4261657!2d50.0895804!1m5!1m1!1s0x470c40fc635ac54f:0x320cc9caa5f1508e!2m2!1d15.2881713!2d49.9617385!1m5!1m1!1s0x470b9500370691c1:0x885e9bd420755f0e!2m2!1d14.4261657!2d50.0895804!1m5!1m1!1s0x47a0995088c9a067:0x587e35c5a4752f96!2m2!1d12.8865083!2d50.2194338!1m5!1m1!1s0x4709cfae512c57c1:0x76b48269a1e2c159!2m2!1d13.7126519!2d51.0797383?entry=ttu" target="_blank" class="hidden sm:inline-flex items-center px-3 py-1.5 border border-slate-600 text-xs font-medium rounded-md text-slate-200 bg-slate-700 hover:bg-slate-600 transition shadow-sm">
+                    📍 Open Google Maps Route ↗
+                </a>
+            </div>
         </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#intro">Intro</a></li>
-          <li><a href="#work">Work</a></li>
-          <!-- <li><a href="#about">About</a></li> -->
-          <li><a href="#contact">Contact</a></li>
-          <!-- <li><a href="#elements">Elements</a></li> -->
-        </ul>
-      </nav>
+        <!-- Tabs Bar -->
+        <div class="bg-slate-800/90 border-t border-slate-700/60 px-4 sm:px-6 lg:px-8 flex space-x-2 overflow-x-auto">
+            <button onclick="switchTab('overview')" id="btn-overview" class="tab-btn px-4 py-2.5 text-sm font-semibold text-emerald-400 border-b-2 border-emerald-500 whitespace-nowrap transition">🗺️ Overview &amp; Route</button>
+            <button onclick="switchTab('prague')" id="btn-prague" class="tab-btn px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition">🍻 Prague Guide</button>
+            <button onclick="switchTab('kutna')" id="btn-kutna" class="tab-btn px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition">🦴 Kutná Hora</button>
+            <button onclick="switchTab('karlovy')" id="btn-karlovy" class="tab-btn px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition">♨️ Karlovy Vary</button>
+        </div>
     </header>
 
-    <!-- Main -->
-    <div id="main">
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 overflow-y-auto">
 
-      <!-- Intro -->
-      <!-- <div>
-								<ul class="actions">
-									<li><a href="#" class="button primary small">Intro</a></li>
-									<li><a href="#" class="button small">Work</a></li>
-									<li><a href="#" class="button small">Contact</a></li>
-								</ul>
-							</div> -->
-      <article id="intro">
-        <h2 class="major">Intro</h2>
-        <span class="image main"><img src="images/welcome2.gif" alt="" /></span>
-        <blockquote>Think, implement, electrify!</blockquote>
-        <p>Welcome to my website! My name is Shyngys Muratbek and I am an electrical engineering enthusiast. I am
-          delighted that you have taken the time to visit this site, where you can find all the important information
-          about my projects. Take a look at some of my <a href="#work"><b>awesome work!</b> </a>.</p>
-        <p>I am always on the lookout for like-minded individuals who share my passion for programming and are keen to
-          collaborate on exciting projects. If you are interested, please do not hesitate to get in touch. -> <a
-            href="#contact"><b>contact me!</b> </a></p>
-        <p>For those who may be <strong>hiring</strong>, I hold a Bachelor of Engineering degree in
-          Electrical Engineering and Automation, specializing in Industry 4.0. I studied at the University
-          of Applied Sciences in Mittweida. I am equally enthusiastic about coding and developing electrical circuits.
-        </p>
+        <!-- TAB 1: OVERVIEW & ROUTE -->
+        <div id="tab-overview" class="tab-content active space-y-6">
+            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-xl">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">4-Day Czechia Road Trip Itinerary</h2>
+                        <p class="text-sm text-slate-400 mt-1">Starting &amp; ending at REWE Mickten (Dresden) for 4 travelers.</p>
+                    </div>
+                    <a href="https://www.google.com/maps/dir/REWE,+Sternstraße+2a,+01139+Dresden/The+Benedict+Boutique+Hotel+Old+Town+Prague,+Rybná+685%2F16,+110+00+Staré+Město,+Czechia/Sedlec+Ossuary,+Zámecká,+284+03+Kutná+Hora+3,+Czechia/The+Benedict+Boutique+Hotel+Old+Town+Prague,+Rybná+685%2F16,+110+00+Staré+Město,+Czechia/Hotel+Imperial,+Libušina+1212%2F18,+360+01+Karlovy+Vary+1,+Czechia/REWE,+Sternstraße+2a,+01139+Dresden/@50.4604044,13.3568136,8.42z/data=!4m37!4m36!1m5!1m1!1s0x4709cfae512c57c1:0x76b48269a1e2c159!2m2!1d13.7126519!2d51.0797383!1m5!1m1!1s0x470b9500370691c1:0x885e9bd420755f0e!2m2!1d14.4261657!2d50.0895804!1m5!1m1!1s0x470c40fc635ac54f:0x320cc9caa5f1508e!2m2!1d15.2881713!2d49.9617385!1m5!1m1!1s0x470b9500370691c1:0x885e9bd420755f0e!2m2!1d14.4261657!2d50.0895804!1m5!1m1!1s0x47a0995088c9a067:0x587e35c5a4752f96!2m2!1d12.8865083!2d50.2194338!1m5!1m1!1s0x4709cfae512c57c1:0x76b48269a1e2c159!2m2!1d13.7126519!2d51.0797383?entry=ttu" target="_blank" class="inline-flex items-center px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg shadow transition">
+                        🗺️ Launch Full Google Maps Multi-Stop Route ↗
+                    </a>
+                </div>
 
-        <!-- <div class="table-wrapper"> -->
-        <!-- 	<table class="alt"> -->
-        <!-- 		<thead> -->
-        <!-- 			<tr> -->
-        <!-- 				<th>Topic</th> -->
-        <!-- 				<th>Tools</th> -->
-        <!-- 				<th>Languages</th> -->
-        <!-- 			</tr> -->
-        <!-- 		</thead> -->
-        <!-- 		<tbody> -->
-        <!-- 			<tr> -->
-        <!-- 				<td>Softwaredevelopment</td> -->
-        <!-- 				<td>Best text editor - Neovim and needed compiler</td> -->
-        <!-- 				<td> Python,  C, C++</td> -->
-        <!-- 			</tr> -->
-        <!-- 			<tr> -->
-        <!-- 				<td>Hardwaredevelopment</td> -->
-        <!-- 				<td>Xilinx Vivado 2022.1</td> -->
-        <!-- 				<td>VHDL</td> -->
-        <!-- 				<td>Kicad</td> -->
-        <!-- 			</tr> -->
-        <!-- 			<tr> -->
-        <!-- 				<td>Control technology</td> -->
-        <!-- 				<td> SPS - Simatic S7 300/400, LOGO, Simatic WinCC</td> -->
-        <!-- 				<td>build in</td> -->
-        <!-- 			</tr> -->
-        <!-- 			<tr> -->
-        <!-- 				<td>Microcontroller technology</td> -->
-        <!-- 				<td>CPU: Rabbit, ATMega family, stm32</td> -->
-        <!-- 				<td>C, lua</td> -->
-        <!-- 			</tr> -->
-        <!-- 			<tr> -->
-        <!-- 				<td>Circuit simulations</td> -->
-        <!-- 				<td>LTSpice, PSpice</td> -->
-        <!-- 				<td>none</td> -->
-        <!-- 			</tr> -->
-        <!-- 		</tbody> -->
-        <!-- 	</table> -->
-        <!-- </div> -->
-        <p>Please see below for a link to download my CV!</p>
-        <ul class="actions">
-          <li><a href="my_cv.pdf" target="_blank"
-              class="button small icon solid fa-download">Download my CV!</a></li>
-        </ul>
-        <!-- <body>	
-									<div>
-										&nbsp;
-										<ul class="actions">
-											<li><a href="#" class="button primary small">Intro</a></li>
-											<li><a href="#" class="button small">Work</a></li>
-											<li><a href="#" class="button small">Contact</a></li>
-										</ul>
-									</div>
-								</body> -->
-      </article>
-
-      <!-- Work -->
-      <!-- <div>
-								<ul class="actions">
-									<li><a href="#" class="button small">Intro</a></li>
-									<li><a href="#" class="button primary small">Work</a></li>
-									<li><a href="#" class="button small">Contact</a></li>
-								</ul>
-							</div> -->
-      <article id="work">
-        <h2 class="major">Work</h2>
-        <h3>Bachelor project: MVS-Tester</h3>
-        <a href="https://github.com/ShyngysM/MVS-Tester" class="image fit"><img src="images/fusion360view.gif" alt=""></a>
-        <p>  µC-project: usage of common hardware periphery and a bit of C-code (click on gif!)</p>
-        <ul>
-          <li>Language: C, Assembly, Python</li>
-          <li>Status: in process</li>
-          <li>Tools: LazyVim + STM32CubeIDE + Eagle + Fusion 360 </li>
-          <li>Libraries: HAL, ECUAL, pandas, matplotlib, numpy</li>
-        </ul>
-        <h3>Simple game on RasPi</h3>
-        <a href="https://github.com/ShyngysM/Simple_game_on_RasPi" class="image fit"><img src="images/pygame2.gif"
-            alt=""></a>
-        <p> Python coded game. (click on gif!)</p>
-        <ul>
-          <li>Language: Python</li>
-          <li>Status: in process</li>
-          <li>Tools: NVIM + Raspberry Pi + Basic Dev Kit </li>
-          <li>Libraries: gpiozero, pygame, signal, random</li>
-        </ul>
-        <h3>Universalcounter</h3>
-        <a href="https://github.com/ShyngysM/VHDL_Frequenzzaehler" class="image fit"><img src="images/vhdl.gif"
-            alt=""></a>
-        <p>VHDL designed circuits. (click on gif!)</p>
-        <ul>
-          <li>Language: VHDL</li>
-          <li>Status: done</li>
-          <li>Tool: Xilinx - Vivado</li>
-        </ul>
-
-        <h3>Arcade game</h3>
-        <a href="https://github.com/ShyngysM/Infinite_runner_game" class="image fit"><img src="images/inf_run.gif"
-            alt=""></a>
-        <p>C++ coded game. (click on gif!)</p>
-        <ul>
-          <li>Language: C++</li>
-          <li>Status: done</li>
-          <li>Tools: VSCode + CMake + GCC Compiler</li>
-          <li>Libraries: SDL2</li>
-        </ul>
-
-        <!-- <ul class="icons">
-									<li><a href="#intro" class="icon solid fa-arrow-left"><span class="label">back</span></a></li>
-									<li><a href="#contact" class="icon solid fa-arrow-right"><span class="label">work</span></a></li>
-								</ul> -->
-      </article>
-      <!-- &nbsp;
-							<ul class="actions">
-								<li><a href="#" class="button small">Intro</a></li>
-								<li><a href="#" class="button primary small">Work</a></li>
-								<li><a href="#" class="button small">Contact</a></li>
-							</ul> -->
-
-      <!-- About -->
-      <article id="about">
-        <h2 class="major">About</h2>
-        <span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-        <p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend
-          sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam.
-          Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis
-          in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
-      </article>
-
-      <!-- Contact -->
-      <!-- <ul class="actions">
-								<li><a href="#" class="button small">Intro</a></li>
-								<li><a href="#" class="button small">Work</a></li>
-								<li><a href="#" class="button primary small">Contact</a></li>
-							</ul> -->
-      <article id="contact">
-        <h2 class="major">Contact</h2>
-        <form method="post" action="mailto:tschingis.muratbek@gmail.com">
-          <div class="fields">
-            <div class="field half">
-              <label for="name">Name</label>
-              <input type="text" name="name" id="name" />
+                <!-- Visual Route Map Card -->
+                <div class="bg-slate-900 border border-slate-700 rounded-xl p-4 overflow-hidden text-center">
+                    <img src="custom_route_map_v2.png" alt="Czechia Route Map" class="mx-auto rounded-lg max-h-96 object-contain border border-slate-700">
+                    <p class="text-xs text-slate-400 mt-2">Route: REWE Mickten (Dresden) ➔ Prague (Hotel Benedict) ➔ Kutná Hora ➔ Prague ➔ Karlovy Vary (Spa Hotel Imperial) ➔ Dresden</p>
+                </div>
             </div>
-            <div class="field half">
-              <label for="email">Email</label>
-              <input type="text" name="email" id="email" />
+
+            <!-- Schedule Timeline Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Day 1 -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg border-l-4 border-l-blue-500">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-lg text-white">Day 1 (17.11): Dresden to Prague</h3>
+                        <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded font-medium">Hotel Benedict</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><strong class="text-white">09:30:</strong> Meet &amp; depart from REWE Sternstraße 2a, Dresden.</li>
+                        <li><strong class="text-white">~11:30:</strong> Arrive at <span class="text-blue-400 font-medium">Hotel Benedict Old Town</span> in Prague, drop bags.</li>
+                        <li><strong class="text-white">12:00 - 15:00:</strong> Old Town Square, Astronomical Clock, Charles Bridge &amp; lunch at Lokál Dlouháá.</li>
+                        <li><strong class="text-white">15:15 - 18:30:</strong> Prague Castle &amp; St. Vitus Cathedral.</li>
+                        <li><strong class="text-white">20:00 - LATE:</strong> Dinner and optional nightlife (Buddha-Bar, Duplex, Hemingway Bar).</li>
+                    </ul>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg border-l-4 border-l-purple-500">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-lg text-white">Day 2 (18.11): Kutná Hora &amp; Prague Fun</h3>
+                        <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded font-medium">Day Trip</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><strong class="text-white">08:30 - 09:45:</strong> Drive east from Prague to Kutná Hora.</li>
+                        <li><strong class="text-white">10:00 - 12:15:</strong> Visit Sedlec Ossuary (Bone Church) &amp; St. Barbara's Cathedral.</li>
+                        <li><strong class="text-white">12:30 - 14:00:</strong> Medieval tavern lunch at Restaurace Dačický.</li>
+                        <li><strong class="text-white">15:30 - 18:30:</strong> Active afternoon in Prague (Escape Rooms, Go-Karts, or Pilsner Urquell Tour).</li>
+                    </ul>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg border-l-4 border-l-emerald-500">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-lg text-white">Day 3 (19.11): Karlovy Vary Spa &amp; Sport</h3>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded font-medium">Spa Hotel Imperial</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><strong class="text-white">08:00 - 10:00:</strong> Check out of Hotel Benedict, drive west to <span class="text-emerald-400 font-medium">Spa Hotel Imperial</span>.</li>
+                        <li><strong class="text-white">10:00 - 12:30:</strong> Indoor hotel tennis/fitness OR city bike ride past Vřídlo &amp; Mill Colonnade.</li>
+                        <li><strong class="text-white">14:00 - 19:00:</strong> Imperial mineral pools, sauna world, and thermal spa procedures.</li>
+                        <li><strong class="text-white">19:30 - LATE:</strong> Funicular ride down to illuminated colonnades &amp; gourmet dinner.</li>
+                    </ul>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg border-l-4 border-l-amber-500">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-lg text-white">Day 4 (20.11): Morning Wellness &amp; Return</h3>
+                        <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-1 rounded font-medium">Back to Dresden</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><strong class="text-white">08:00 - 10:30:</strong> Breakfast at Spa Hotel Imperial, morning swim &amp; buy fresh warm spa wafers (*oplatky*).</li>
+                        <li><strong class="text-white">11:00:</strong> Checkout &amp; departure heading north (~2 hours).</li>
+                        <li><strong class="text-white">~13:00:</strong> Arrival back at REWE Sternstraße 2a, Dresden. Trip complete!</li>
+                    </ul>
+                </div>
             </div>
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea name="message" id="message" rows="4"></textarea>
+        </div>
+
+        <!-- TAB 2: PRAGUE GUIDE -->
+        <div id="tab-prague" class="tab-content space-y-6">
+            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-xl">
+                <h2 class="text-2xl font-bold text-white mb-2">Prague City Guide (Nov 17 – 19)</h2>
+                <p class="text-sm text-slate-400">Historic center sightseeing, walkable nightlife, and traditional Bohemian dining.</p>
+
+                <div class="mt-6 bg-slate-900 rounded-lg p-5 border border-slate-700">
+                    <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Your Stay</span>
+                    <h3 class="text-lg font-bold text-white mt-1">Hotel Benedict Old Town Prague (Rybná 685/16)</h3>
+                    <p class="text-sm text-slate-300 mt-2">Located right in the historic center near Revoluční street, within walking distance of Old Town Square, Dlouhá street nightlife, and the Vltava River.</p>
+                </div>
             </div>
-          </div>
-          <ul class="actions">
-            <li><input type="submit" value="Send Message" class="primary" /></li>
-            <li><input type="reset" value="Reset" /></li>
-          </ul>
-        </form>
-        <ul class="icons">
-          <li><a href="https://linkedin.com/in/shyngys-muratbek-5634b6226" class="icon brands fa-linkedin"><span
-                class="label">LinkedIn</span></a></li>
-          <li><a href="https://github.com/ShyngysM" class="icon brands fa-github"><span class="label">GitHub</span></a>
-          </li>
-        </ul>
-      </article>
-      <!-- &nbsp;
-							<ul class="actions">
-								<li><a href="#" class="button small">Intro</a></li>
-								<li><a href="#" class="button small">Work</a></li>
-								<li><a href="#" class="button primary small">Contact</a></li>
-							</ul> -->
 
-      <!-- Elements -->
-      <article id="elements">
-        <h2 class="major">Elements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Must See -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg">
+                    <h3 class="font-bold text-lg text-white mb-3">🏰 Must-See Attractions</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li><strong class="text-white">Old Town Square &amp; Astronomical Clock:</strong> The beating heart of medieval Prague.</li>
+                        <li><strong class="text-white">Charles Bridge:</strong> Historic pedestrian stone bridge lined with baroque statues.</li>
+                        <li><strong class="text-white">Prague Castle &amp; St. Vitus Cathedral:</strong> The largest ancient castle complex in the world.</li>
+                        <li><strong class="text-white">Powder Tower:</strong> Stunning Gothic gateway marking the royal route.</li>
+                    </ul>
+                </div>
 
-        <section>
-          <h3 class="major">Text</h3>
-          <p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is
-            <em>emphasized</em>.
-            This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-            This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a
-              link</a>.
-          </p>
-          <hr />
-          <h2>Heading Level 2</h2>
-          <h3>Heading Level 3</h3>
-          <h4>Heading Level 4</h4>
-          <h5>Heading Level 5</h5>
-          <h6>Heading Level 6</h6>
-          <hr />
-          <h4>Blockquote</h4>
-          <blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod.
-            Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac
-            adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam
-            adipiscing eu felis.</blockquote>
-          <h4>Preformatted</h4>
-          <pre><code>i = 0;
-
-              while (!deck.isInOrder()) {
-              print 'Iteration ' + i;
-              deck.shuffle();
-              i++;
-              }
-
-              print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-        </section>
-
-        <section>
-          <h3 class="major">Lists</h3>
-
-          <h4>Unordered</h4>
-          <ul>
-            <li>Dolor pulvinar etiam.</li>
-            <li>Sagittis adipiscing.</li>
-            <li>Felis enim feugiat.</li>
-          </ul>
-
-          <h4>Alternate</h4>
-          <ul class="alt">
-            <li>Dolor pulvinar etiam.</li>
-            <li>Sagittis adipiscing.</li>
-            <li>Felis enim feugiat.</li>
-          </ul>
-
-          <h4>Ordered</h4>
-          <ol>
-            <li>Dolor pulvinar etiam.</li>
-            <li>Etiam vel felis viverra.</li>
-            <li>Felis enim feugiat.</li>
-            <li>Dolor pulvinar etiam.</li>
-            <li>Etiam vel felis lorem.</li>
-            <li>Felis enim et feugiat.</li>
-          </ol>
-          <h4>Icons</h4>
-          <ul class="icons">
-            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-          </ul>
-
-          <h4>Actions</h4>
-          <ul class="actions">
-            <li><a href="#" class="button primary">Default</a></li>
-            <li><a href="#" class="button">Default</a></li>
-          </ul>
-          <ul class="actions stacked">
-            <li><a href="#" class="button primary">Default</a></li>
-            <li><a href="#" class="button">Default</a></li>
-          </ul>
-        </section>
-
-        <section>
-          <h3 class="major">Table</h3>
-          <h4>Default</h4>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Item One</td>
-                  <td>Ante turpis integer aliquet porttitor.</td>
-                  <td>29.99</td>
-                </tr>
-                <tr>
-                  <td>Item Two</td>
-                  <td>Vis ac commodo adipiscing arcu aliquet.</td>
-                  <td>19.99</td>
-                </tr>
-                <tr>
-                  <td>Item Three</td>
-                  <td> Morbi faucibus arcu accumsan lorem.</td>
-                  <td>29.99</td>
-                </tr>
-                <tr>
-                  <td>Item Four</td>
-                  <td>Vitae integer tempus condimentum.</td>
-                  <td>19.99</td>
-                </tr>
-                <tr>
-                  <td>Item Five</td>
-                  <td>Ante turpis integer aliquet porttitor.</td>
-                  <td>29.99</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="2"></td>
-                  <td>100.00</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-
-          <h4>Alternate</h4>
-          <div class="table-wrapper">
-            <table class="alt">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Item One</td>
-                  <td>Ante turpis integer aliquet porttitor.</td>
-                  <td>29.99</td>
-                </tr>
-                <tr>
-                  <td>Item Two</td>
-                  <td>Vis ac commodo adipiscing arcu aliquet.</td>
-                  <td>19.99</td>
-                </tr>
-                <tr>
-                  <td>Item Three</td>
-                  <td> Morbi faucibus arcu accumsan lorem.</td>
-                  <td>29.99</td>
-                </tr>
-                <tr>
-                  <td>Item Four</td>
-                  <td>Vitae integer tempus condimentum.</td>
-                  <td>19.99</td>
-                </tr>
-                <tr>
-                  <td>Item Five</td>
-                  <td>Ante turpis integer aliquet porttitor.</td>
-                  <td>29.99</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="2"></td>
-                  <td>100.00</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </section>
-
-        <section>
-          <h3 class="major">Buttons</h3>
-          <ul class="actions">
-            <li><a href="#" class="button primary">Primary</a></li>
-            <li><a href="#" class="button">Default</a></li>
-          </ul>
-          <ul class="actions">
-            <li><a href="#" class="button">Default</a></li>
-            <li><a href="#" class="button primary small">Small</a></li>
-          </ul>
-          <ul class="actions">
-            <li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-            <li><a href="#" class="button icon solid fa-download">Icon</a></li>
-          </ul>
-          <ul class="actions">
-            <li><span class="button primary disabled">Disabled</span></li>
-            <li><span class="button disabled">Disabled</span></li>
-          </ul>
-        </section>
-
-        <section>
-          <h3 class="major">Form</h3>
-          <form method="post" action="#">
-            <div class="fields">
-              <div class="field half">
-                <label for="demo-name">Name</label>
-                <input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
-              </div>
-              <div class="field half">
-                <label for="demo-email">Email</label>
-                <input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
-              </div>
-              <div class="field">
-                <label for="demo-category">Category</label>
-                <select name="demo-category" id="demo-category">
-                  <option value="">-</option>
-                  <option value="1">Manufacturing</option>
-                  <option value="1">Shipping</option>
-                  <option value="1">Administration</option>
-                  <option value="1">Human Resources</option>
-                </select>
-              </div>
-              <div class="field half">
-                <input type="radio" id="demo-priority-low" name="demo-priority" checked>
-                <label for="demo-priority-low">Low</label>
-              </div>
-              <div class="field half">
-                <input type="radio" id="demo-priority-high" name="demo-priority">
-                <label for="demo-priority-high">High</label>
-              </div>
-              <div class="field half">
-                <input type="checkbox" id="demo-copy" name="demo-copy">
-                <label for="demo-copy">Email me a copy</label>
-              </div>
-              <div class="field half">
-                <input type="checkbox" id="demo-human" name="demo-human" checked>
-                <label for="demo-human">Not a robot</label>
-              </div>
-              <div class="field">
-                <label for="demo-message">Message</label>
-                <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-              </div>
+                <!-- Must Eat -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg">
+                    <h3 class="font-bold text-lg text-white mb-3">🍽️ Must-Eat &amp; Drink</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li><strong class="text-white">Lokál Dlouháá:</strong> Freshly pumped Pilsner Urquell paired with traditional Czech pork roast and dumplings.</li>
+                        <li><strong class="text-white">Café Imperial:</strong> Stunning art nouveau interior serving classic Czech beef goulash and svíčková.</li>
+                        <li><strong class="text-white">Kantýna:</strong> Butcher-style Czech beef tartare and grilled steaks.</li>
+                    </ul>
+                </div>
             </div>
-            <ul class="actions">
-              <li><input type="submit" value="Send Message" class="primary" /></li>
-              <li><input type="reset" value="Reset" /></li>
-            </ul>
-          </form>
-        </section>
 
-      </article>
+            <!-- Nightlife -->
+            <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg">
+                <h3 class="font-bold text-lg text-white mb-3">🥂 Walkable Nightlife</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Buddha-Bar Prague</strong>
+                        <p class="text-xs text-slate-400 mt-1">Sultry underground lounge, world music DJs &amp; signature cocktails (3 min walk).</p>
+                    </div>
+                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Duplex Rooftop Club</strong>
+                        <p class="text-xs text-slate-400 mt-1">Famous rooftop club overlooking Wenceslas Square.</p>
+                    </div>
+                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Hemingway Bar</strong>
+                        <p class="text-xs text-slate-400 mt-1">Exceptional craft speakeasy in Old Town.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    </div>
+        <!-- TAB 3: KUTNÁ HORA -->
+        <div id="tab-kutna" class="tab-content space-y-6">
+            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-xl">
+                <h2 class="text-2xl font-bold text-white mb-2">Kutná Hora Day Trip (Nov 18 Morning)</h2>
+                <p class="text-sm text-slate-400">Sedlec Ossuary (Bone Church), Gothic wonders, and medieval tavern lunch.</p>
+
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <img src="https://lh3.googleusercontent.com/gg/AJWXcNfjgV1DC5SQMFAM0OaE5wU6CkzloSmTSQJtbRdZ7nyCfnTsI3txGxOK0BqZIkcTLnw55525xsTdfNsNYoyWWXzkZ9J739A8VhXWJomWvM50pp4BTFGDBCPKSBWGYTkO4sB1ehGmJMEIrgR2YupKehdbezrWDt06LL3h5lCom-bK027o1cFAuRXXtnWO5xHovfZFRBQSe7eosBoq2UEna7SstOLqCDxFaQ9aVT3UGMysvt32oRws3Lgh7YC054xhgIVs0zUDmurSlN9weqT8r0dKuNtowNhv-ng=s0" alt="Sedlec Ossuary Bone Chalice" class="rounded-lg shadow-lg w-full h-64 object-cover border border-slate-700">
+                        <p class="text-xs text-slate-400 text-center mt-2">Sedlec Ossuary Bone Chalice</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                            <h3 class="font-bold text-white">🦴 Sedlec Ossuary (The Bone Church)</h3>
+                            <p class="text-xs text-slate-300 mt-1">A Roman Catholic chapel adorned with the artistic skeletal remains of 40,000 to 70,000 people, featuring the iconic bone chandelier.</p>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                            <h3 class="font-bold text-white">⛪ St. Barbara’s Cathedral</h3>
+                            <p class="text-xs text-slate-300 mt-1">A breathtaking Gothic masterpiece dedicated to the patron saint of miners, featuring tent-like triple roofs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg">
+                    <h3 class="font-bold text-lg text-white mb-3">🍽️ Must-Eat Food</h3>
+                    <p class="text-sm text-slate-300"><strong class="text-white">Restaurace Dačický:</strong> Atmospheric medieval tavern serving hearty Czech roasted duck, game specialties, and dark Czech beer.</p>
+                </div>
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg">
+                    <h3 class="font-bold text-lg text-white mb-3">🎯 Prague Afternoon Fun (Post-Kutná Hora)</h3>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li>• <strong class="text-white">The Chamber Escape Rooms:</strong> Immersive live escape games.</li>
+                        <li>• <strong class="text-white">Praga Arena Go-Karts:</strong> Indoor high-speed group racing.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: KARLOVY VARY -->
+        <div id="tab-karlovy" class="tab-content space-y-6">
+            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-xl">
+                <h2 class="text-2xl font-bold text-white mb-2">Karlovy Vary Thermal Spa &amp; City (Nov 19 – 20)</h2>
+                <p class="text-sm text-slate-400">Luxury spa resort, indoor tennis, city bike tour, and healing mineral springs.</p>
+
+                <div class="mt-6 bg-slate-900 rounded-lg p-5 border border-slate-700">
+                    <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Your Stay</span>
+                    <h3 class="text-lg font-bold text-white mt-1">Spa Hotel Imperial (Libušina 1212/18)</h3>
+                    <p class="text-sm text-slate-300 mt-2">Perched high above the city with sweeping valley views, featuring indoor tennis courts, fitness facilities, and direct private funicular access down to the colonnades.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Morning Options -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg">
+                    <h3 class="font-bold text-lg text-white mb-3">🎾 Morning Active Options (10:00 - 12:30)</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li><strong class="text-white">Option A (Hotel Tennis):</strong> Play doubles on Spa Hotel Imperial's indoor courts or workout at the fitness center.</li>
+                        <li><strong class="text-white">Option B (City Bike Ride):</strong> Cycle along the Ohře River path past the Vřídlo Geyser, Mill Colonnade, Grandhotel Pupp, and Dvořák Gardens.</li>
+                    </ul>
+                </div>
+
+                <!-- Afternoon Spa & Eat -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-lg">
+                    <h3 class="font-bold text-lg text-white mb-3">♨️ Afternoon Spa &amp; Must-Eat</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li><strong class="text-white">Imperial Spa Center:</strong> Mineral pools, saunas, and traditional balneotherapy procedures.</li>
+                        <li><strong class="text-white">Spa Wafers (Lázeňské oplatky):</strong> Traditional sweet thin wafers baked with hazelnut or chocolate filling.</li>
+                        <li><strong class="text-white">Grandhotel Pupp Restaurant:</strong> Fine dining and traditional Bohemian cuisine.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
 
     <!-- Footer -->
-    <footer id="footer">
-      <p class="copyright">&copy; S. Muratbek limited</a>.</p>
+    <footer class="bg-slate-800 border-t border-slate-700 py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400">
+            Czechia 4-Day Road Trip Itinerary • REWE Mickten ➔ Prague ➔ Kutná Hora ➔ Karlovy Vary ➔ Dresden
+        </div>
     </footer>
 
-  </div>
-
-  <!-- BG -->
-  <div id="bg"></div>
-
-  <!-- Scripts -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-
+    <script>
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Deactivate all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-emerald-400', 'border-emerald-500');
+                btn.classList.add('text-slate-400', 'border-transparent');
+            });
+            // Show selected tab
+            document.getElementById('tab-' + tabId).classList.add('active');
+            // Activate selected button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-400', 'border-transparent');
+            activeBtn.classList.add('text-emerald-400', 'border-emerald-500');
+        }
+    </script>
 </body>
-
 </html>
